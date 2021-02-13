@@ -33,7 +33,8 @@ use App\Http\Controllers\DashboardController;
 Route::get('/',[PagesController::class, 'home']);
 Route::get('about/',[PagesController::class, 'about']);
 
-Route::get('/articles', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // If you do not want to use include statements, use this format instead
+
 //Route::get('/', 'App\Http\Controllers\PagesController@home');

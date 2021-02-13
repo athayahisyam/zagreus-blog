@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,7 +16,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dash.index');
+        // PDO Based Query
+        // $user = DB::table('authors')->get();
+
+        // Eloquent Based Query
+        $authors = Author::all();
+
+        // dd($user); 
+        return view('dash.index', ['authors' => $authors]);
     }
 
     /**
