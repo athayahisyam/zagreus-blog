@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -34,6 +35,9 @@ Route::get('/',[PagesController::class, 'home']);
 Route::get('about/',[PagesController::class, 'about']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/authors/{authors}', [DashboardController::class, 'show']);
+
+Route::get('/users', [UserController::class, 'index']);
 
 // If you do not want to use include statements, use this format instead
 
