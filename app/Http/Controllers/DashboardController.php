@@ -91,9 +91,9 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Author $authors)
     {
-        //
+        return view('dash.edit', ['authors' => $authors]);
     }
 
     /**
@@ -103,9 +103,20 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Author $authors)
     {
-        //
+        $request->validate([
+            'given_name' => 'required',
+            'family_name' => 'required',
+            'email' => 'required',
+        ]);
+        
+        Author::where('id', $authors->id)->update([
+            'given_name' => $request->given_name,
+            'family_name' => $request->family_name,
+            'email' => $request->email,
+        ]);
+        return redirect('/dashboard')->with('status', 'Edit Successful');
     }
 
     /**
@@ -114,8 +125,9 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Author $authors)
     {
-        //
+        Author::destroy($authors->id);
+        return redirect('/dashboard')->with('status', 'Delete Successful');
     }
 }

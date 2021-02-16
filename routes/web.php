@@ -38,6 +38,9 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/authors/create', [DashboardController::class, 'create']);
 Route::get('/authors/{authors}', [DashboardController::class, 'show']);
 Route::post('/authors', [DashboardController::class, 'store']);
+Route::delete('/authors/{authors}', [DashboardController::class, 'destroy']);
+Route::get('/authors/{authors}/edit', [DashboardController::class, 'edit']);
+Route::patch('/authors/{authors}', [DashboardController::class, 'update']);
 
 
 Route::get('/users', [UserController::class, 'index']);
