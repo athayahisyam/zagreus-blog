@@ -33,7 +33,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('dash.create');
     }
 
     /**
@@ -44,7 +44,34 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'given_name' => 'required',
+            'family_name' => 'required',
+            'email' => 'required',
+        ]);
+
+        // PDO
+
+        // $authors = new Author;
+        // $authors->given_name = $request->given_name;
+        // $authors->family_name = $request->family_name;
+        // $authors->email = $request->email;
+        // $authors->save();
+
+        // Eloquent: Without $fillable in \Models\Author
+
+        // Author::create([
+        //     'given_name' => $request->given_name,
+        //     'family_name' => $request->family_name,
+        //     'email' => $request->email,
+        // ]);
+
+        // Eloquent: With $fillable in \Models\Author
+        Author::create($request->all());
+
+        return redirect('/dashboard')->with('status', 'Entry Successful');
+
+        // return $request;
     }
 
     /**

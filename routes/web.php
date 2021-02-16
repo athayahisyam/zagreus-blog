@@ -35,7 +35,10 @@ Route::get('/',[PagesController::class, 'home']);
 Route::get('about/',[PagesController::class, 'about']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/authors/create', [DashboardController::class, 'create']);
 Route::get('/authors/{authors}', [DashboardController::class, 'show']);
+Route::post('/authors', [DashboardController::class, 'store']);
+
 
 Route::get('/users', [UserController::class, 'index']);
 

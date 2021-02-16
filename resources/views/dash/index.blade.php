@@ -8,6 +8,13 @@
         <div class="col-6">
             <h1 class="mt-3">Users Dashboard</h1>
             <br />
+            <a href="/authors/create" class="btn btn-primary my">Buat author baru</a>
+            <br />
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
             <ul class="list-group">
                 @foreach( $authors as $authors )
                 <li class="list-group-item d-flex justify-content-between align-items-center">
